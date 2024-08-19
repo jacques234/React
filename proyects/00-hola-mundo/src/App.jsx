@@ -1,19 +1,41 @@
+import { useState } from 'react'
+import { TwitterFollowCard } from './TwitterFollowCard'
 import './App.css'
-export function App(){
+
+
+const users = [
+    {
+        userName: 'DiegoPM',
+        name: 'Diego Enrique',
+        isFollowing: true
+    },
+    {
+        userName: 'DaniaCIR',
+        name: 'Dania Decire',
+        isFollowing: false
+    },
+    {
+        userName: 'CitlaRaRo',
+        name: 'Citlali Ramos',
+        isFollowing: true
+    }
+]
+
+export function App() {
     return (
-        <article className='tw-followCard'>
-            <header className='tw-followCard-header'>
-                <img
-                className='tw-followCard-avatar'
-                alt="Avatar" src="https://pbs.twimg.com/profile_images/1433234061691084800/8TUii2rl_normal.jpg" />
-                <div className='tw-followCard-info'>
-                    <strong>AMLO</strong>
-                    <span className='tw-followCard-infoUserName'>@Amlo</span>
-                </div>
-            </header>
-            <aside>
-                <button className='tw-followCard-button'>Seguir</button>
-            </aside>
-        </article>
+        <section className='App'>
+            {
+                users.map(({ userName, name, isFollowing },index) => (
+                    <TwitterFollowCard
+                        key={index}
+                        userName={userName}
+                        isFollowingP={isFollowing}>
+                        {name}
+                    </TwitterFollowCard>
+                )
+                )
+            }
+
+        </section>
     )
 }
